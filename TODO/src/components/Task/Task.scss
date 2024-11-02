@@ -1,0 +1,17 @@
+.card_task {
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.sub__container {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+}
+
+.task__description {
+  padding: 0px 0px 15px 0px;
+  border-bottom: 1px solid #000000;
+}

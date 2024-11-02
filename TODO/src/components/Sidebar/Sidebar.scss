@@ -1,0 +1,39 @@
+.container {
+  border-right: 1px solid black;
+  padding-right: 20px;
+  width: 80px;
+  height: 100%;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.menu {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.sidebar__item-button {
+  color: #ecf0f1;
+  text-decoration: none;
+  padding: 10px 15px;
+  margin: 5px 0;
+  border-radius: 4px;
+  display: block;
+  background-color: #34495e;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar__item-button:hover {
+  background-color: #1abc9c;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 200px;
+  }
+}

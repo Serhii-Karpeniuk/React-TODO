@@ -1,0 +1,43 @@
+.container__avatar {
+  position: relative;
+}
+
+.avatar {
+  display: flex;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 20px;
+  transform: rotate(360deg);
+  align-items: center;
+  display: flex;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  background-color: #d3b7b7;
+}
+
+.upload_button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  border: none;
+  color: white;
+  background-color: #6495ed;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0px;
+  right: -5px;
+}
+
+@media (min-width: 768px) {
+  .container__avatar,
+  .avatar {
+    height: 70px;
+    width: 70px;
+  }
+}
