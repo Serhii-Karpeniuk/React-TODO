@@ -3,11 +3,9 @@
 }
 
 .avatar {
-  display: flex;
   height: 60px;
   width: 60px;
   border-radius: 50%;
-  position: absolute;
   top: 0;
   left: 0;
   line-height: 20px;
@@ -31,13 +29,21 @@
   justify-content: center;
   position: absolute;
   bottom: 0px;
-  right: -5px;
+  right: 37px;
+  cursor: pointer;
+}
+
+.fullName__container {
+  margin-top: 5px;
+  font-size: 15px;
 }
 
 @media (min-width: 768px) {
-  .container__avatar,
-  .avatar {
-    height: 70px;
-    width: 70px;
+  .fullName__container {
+    font-size: 20px;
+  }
+
+  .upload_button {
+    right: 70px;
   }
 }

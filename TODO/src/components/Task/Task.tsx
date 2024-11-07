@@ -6,7 +6,7 @@ import "../Task/Task.scss";
 const Task = ({ task }: { task: TaskInterface }) => {
   const { toggleTaskStatus, tasks, setTasks } =
     useOutletContext<OutletContextInterface>();
-  console.log(`Task Component`, tasks);
+  // console.log(`Task Component`, tasks);
 
   const handleCheckBoxChange = () => {
     toggleTaskStatus(task.id);

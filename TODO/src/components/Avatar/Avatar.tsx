@@ -2,17 +2,20 @@ import { ChangeEvent, useEffect, useRef, useState, useContext } from "react";
 import { toast } from "react-toastify";
 import { MessageContext } from "../MessageProvider/MessageProvider";
 import MessageContextEnam from "../../Enums/MessageContextEnums";
+import { DialogProviderContext } from "../DialogProvider/DialogProvider";
 import "react-toastify/dist/ReactToastify.css";
 import "./Avatar.scss";
 
-interface NameProps {
-  firstName: string;
-  lastName: string;
-}
-
-const Avatar = ({ firstName, lastName }: NameProps) => {
+const Avatar = () => {
   const [imageUrl, setImageUrl] = useState<string>("");
-
+  const context = useContext(DialogProviderContext);
+  if (!context) {
+    throw new Error(
+      "DialogProviderContext must be used within a DialogProvider"
+    );
+  }
+  const { submittedData } = context;
+  const { firstName, lastName } = submittedData;
   const messageContext = useContext(MessageContext);
 
   if (!messageContext) {
@@ -93,9 +96,10 @@ const Avatar = ({ firstName, lastName }: NameProps) => {
             +
           </a>
         </div>
-        <div>
+        <div className="fullName__container">
           {firstName} {lastName}
         </div>
+
         {avatarMessage && <div style={avatarMessageStyle}>{avatarMessage}</div>}
       </div>
     </>

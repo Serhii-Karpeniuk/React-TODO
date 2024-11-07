@@ -1,14 +1,23 @@
+import { useContext, useState, useEffect } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
-import TaskContainerProps from "../../Interfaces/TaskContainerProps";
-import TaskForm from "../TaskForm/TaskForm";
-import TaskInterface from "../../Interfaces/TaskInterface";
 import "./TaskContainer.scss";
+import { DialogProviderContext } from "../DialogProvider/DialogProvider";
 
 const TaskContainer = () => {
+  const context = useContext(DialogProviderContext);
+  if (!context) {
+    throw new Error(
+      "DialogProviderContext must be used within a DialogProvider"
+    );
+  }
+  const {
+    setTaskFormVisible,
+    tasks,
+    setTasks,
+    addTaskHandler,
+    toggleTaskStatus,
+  } = context;
   const location = useLocation();
-  const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [tasks, setTasks] = useState<TaskInterface[]>([]);
   const [filter, setFilter] = useState<string>(
     location.pathname.split("/").pop() || "all"
   );
@@ -19,7 +28,7 @@ const TaskContainer = () => {
     if (Array.isArray(tasksItems)) {
       setTasks(tasksItems);
     }
-  }, [location.pathname]);
+  }, [location.pathname, setTasks]);
 
   useEffect(() => {
     if (tasks.length > 0) {
@@ -32,20 +41,7 @@ const TaskContainer = () => {
   }, [filter]);
 
   const handleClick = () => {
-    setIsVisible(true);
-  }; // setModalSettings викликатии і передати об'єкт
-
-  const addTaskHandler = (newTask: TaskInterface) => {
-    setTasks((prevTasks) => [...prevTasks, newTask]);
-    setIsVisible(false);
-  };
-
-  const toggleTaskStatus = (taskId: string) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === taskId ? { ...task, open: !task.open } : task
-      )
-    );
+    setTaskFormVisible(true);
   };
 
   const handleFilterChange = (filter: string) => {
@@ -68,40 +64,26 @@ const TaskContainer = () => {
           +New Task
         </button>
       </div>
-      <TaskForm isVisible={isVisible} addTaskHandler={addTaskHandler} />
+
       <div className="navigation_buttons-container">
-        <NavLink
-          to="all"
-          onClick={() => handleFilterChange("all")}
-          className={({ isActive, isPending }: TaskContainerProps) =>
-            isPending ? "pending" : isActive ? "active" : "default_link"
-          }
-        >
+        <NavLink to="all" onClick={() => handleFilterChange("all")}>
           All Task
         </NavLink>
-
-        <NavLink
-          to="open"
-          onClick={() => handleFilterChange("open")}
-          className={({ isActive, isPending }: TaskContainerProps) =>
-            isPending ? "pending" : isActive ? "active" : "default_link"
-          }
-        >
+        <NavLink to="open" onClick={() => handleFilterChange("open")}>
           Open Task
         </NavLink>
-
-        <NavLink
-          to="closed"
-          onClick={() => handleFilterChange("closed")}
-          className={({ isActive, isPending }: TaskContainerProps) =>
-            isPending ? "pending" : isActive ? "active" : "default_link"
-          }
-        >
+        <NavLink to="closed" onClick={() => handleFilterChange("closed")}>
           Closed Task
         </NavLink>
       </div>
-
-      <Outlet context={{ tasks: filteredTasks, toggleTaskStatus, setTasks }} />
+      <Outlet
+        context={{
+          tasks: filteredTasks,
+          toggleTaskStatus,
+          setTasks,
+          addTaskHandler,
+        }}
+      />
     </>
   );
 };
