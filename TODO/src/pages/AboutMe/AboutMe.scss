@@ -1,0 +1,12 @@
+.aboutMe {
+  line-height: 1.5;
+  font-size: 12px;
+  white-space: pre-line;
+}
+
+@media (min-width: 768px) {
+  .aboutMe {
+    line-height: 2;
+    font-size: 14px;
+  }
+}
