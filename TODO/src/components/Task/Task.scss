@@ -15,3 +15,32 @@
   padding: 0px 0px 15px 0px;
   border-bottom: 1px solid #000000;
 }
+
+.time__container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+@media (min-width: 368px) {
+  .remove__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    color: white;
+    height: 25px;
+    border-radius: 5px;
+    padding: 2px;
+    text-transform: uppercase;
+    transition: transform 0.15s;
+    transform-style: preserve-3d;
+    border: 2px solid #b18597;
+  }
+
+  .remove__button:hover {
+    background: #ffe9e9;
+    color: black;
+    transform: translate(0, 0.25em);
+  }
+}

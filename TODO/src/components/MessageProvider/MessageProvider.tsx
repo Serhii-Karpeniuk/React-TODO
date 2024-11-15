@@ -16,6 +16,8 @@ const MessageProvider = ({ children }: { children: ReactNode }) => {
         return { color: "green" };
       case MessageContextEnam.error:
         return { color: "red" };
+      case MessageContextEnam.errorTime:
+        return { color: "red" };
       case MessageContextEnam.info:
         return { color: "blue" };
       default:
@@ -43,23 +45,3 @@ const MessageProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export default MessageProvider;
-
-// export const MessageContext = createContext();
-
-// const ModalContext = ({ children }) => {
-//   const [modalSettings, setModalSettings] = useState({
-//     isOpen: false,
-//     title: '',
-//     content: null
-//   });
-
-//   return (
-//     <MessageContext.Provider value={{ message, setMessage }}>
-//       {" "}
-//       {children}
-//       {/* {message && <div style={{ color: "red" }}>{message}</div>} */}
-//     </MessageContext.Provider>
-//   );
-// };
-
-// створити окрему компоненту модалки

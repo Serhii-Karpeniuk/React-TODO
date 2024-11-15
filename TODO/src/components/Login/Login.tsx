@@ -1,16 +1,27 @@
-import { useContext } from "react";
-import { DialogProviderContext } from "../DialogProvider/DialogProvider";
+import { Dispatch, SetStateAction, useContext } from "react";
+import { DialogContext } from "../DialogProvider/DialogProvider";
+import FormDialog from "../FormDialog/FormDialog";
 import "./Login.scss";
+import { UserInterface } from "../../App";
 
-const Login = () => {
-  const { setModalOpen } = useContext(DialogProviderContext);
+interface LoginProps {
+  setUser: Dispatch<SetStateAction<UserInterface>>;
+}
+
+const Login = ({ setUser }: LoginProps) => {
+  const { setDialogState } = useContext(DialogContext);
   return (
     <>
       <img
         src="../src/images/user-icon.png"
         alt="User Icon"
         className="icon"
-        onClick={() => setModalOpen(true)}
+        onClick={() =>
+          setDialogState({
+            open: true,
+            content: <FormDialog setUser={setUser} />,
+          })
+        }
       />
     </>
   );

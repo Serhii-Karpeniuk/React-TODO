@@ -1,22 +1,13 @@
 import { useContext, useState, useEffect } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import "./TaskContainer.scss";
-import { DialogProviderContext } from "../DialogProvider/DialogProvider";
+import { DialogContext } from "../DialogProvider/DialogProvider";
+import TaskForm from "../TaskForm/TaskForm";
+import TaskInterface from "../../Interfaces/TaskInterface";
 
 const TaskContainer = () => {
-  const context = useContext(DialogProviderContext);
-  if (!context) {
-    throw new Error(
-      "DialogProviderContext must be used within a DialogProvider"
-    );
-  }
-  const {
-    setTaskFormVisible,
-    tasks,
-    setTasks,
-    addTaskHandler,
-    toggleTaskStatus,
-  } = context;
+  const { setDialogState } = useContext(DialogContext);
+  const [tasks, setTasks] = useState<TaskInterface[]>([]);
   const location = useLocation();
   const [filter, setFilter] = useState<string>(
     location.pathname.split("/").pop() || "all"
@@ -41,7 +32,10 @@ const TaskContainer = () => {
   }, [filter]);
 
   const handleClick = () => {
-    setTaskFormVisible(true);
+    setDialogState({
+      open: true,
+      content: <TaskForm addTaskHandler={addTaskHandler} />,
+    });
   };
 
   const handleFilterChange = (filter: string) => {
@@ -54,6 +48,18 @@ const TaskContainer = () => {
     if (filter === "closed") return !task.open;
     return true;
   });
+
+  const addTaskHandler = (newTask: TaskInterface) => {
+    setTasks((prevTasks) => [...prevTasks, newTask]);
+  };
+
+  const toggleTaskStatus = (taskId: string) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskId ? { ...task, open: !task.open } : task
+      )
+    );
+  };
 
   return (
     <>

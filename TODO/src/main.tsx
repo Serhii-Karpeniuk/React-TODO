@@ -10,6 +10,7 @@ import TaskContainer from "./components/TaskContainer/TaskContainer.tsx";
 import AllTasks from "./pages/AllTasks/AllTasks.tsx";
 import OpenTasks from "./pages/OpenTask/OpenTasks.tsx";
 import ClosedTasks from "./pages/ClosedTask/ClosedTasks.tsx";
+import RandomTaskPage from "./pages/RandomTaskPage/RandomTaskPage.tsx";
 import AboutMe from "./pages/AboutMe/AboutMe.tsx";
 import "./index.css";
 
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <AboutMe />,
+      },
+      {
+        path: "random",
+        element: <RandomTaskPage />,
       },
     ],
   },

@@ -4,3 +4,9 @@
   border-radius: 50%;
   cursor: pointer;
 }
+
+.icon:hover {
+  box-shadow: 5px 10px 10px black;
+  border-radius: 0;
+  background-color: rgb(255, 255, 255);
+}

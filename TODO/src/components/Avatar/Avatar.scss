@@ -1,3 +1,7 @@
+.profile_container {
+  width: 150px;
+}
+
 .container__avatar {
   position: relative;
 }
@@ -27,9 +31,10 @@
   background-color: #6495ed;
   display: flex;
   justify-content: center;
+  align-items: center;
   position: absolute;
   bottom: 0px;
-  right: 37px;
+  left: 45px;
   cursor: pointer;
 }
 
@@ -41,9 +46,5 @@
 @media (min-width: 768px) {
   .fullName__container {
     font-size: 20px;
-  }
-
-  .upload_button {
-    right: 70px;
   }
 }

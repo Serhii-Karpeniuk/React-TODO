@@ -5,15 +5,33 @@ import Login from "./components/Login/Login";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { Outlet } from "react-router-dom";
 import MessageProvider from "./components/MessageProvider/MessageProvider";
-import DialogProvider from "./components/DialogProvider/DialogProvider"; //
+import DialogComponent from "./components/DialogProvider/DialogComponent";
+import DialogProvider from "./components/DialogProvider/DialogProvider";
+import { useEffect, useState } from "react";
+
+export interface UserInterface {
+  firstName: string;
+  lastName: string;
+}
 
 const App = () => {
+  const [user, setUser] = useState<UserInterface>({
+    firstName: "",
+    lastName: "",
+  });
+
+  useEffect(() => {
+    const firstName = localStorage.getItem("firstName") || "";
+    const lastName = localStorage.getItem("lastName") || "";
+    setUser({ firstName, lastName });
+  }, []); // переробити у контекст
   return (
     <DialogProvider>
       <MessageProvider>
+        <DialogComponent />
         <div className="header_container">
-          <Avatar />
-          <Login />
+          <Avatar user={user} />
+          <Login setUser={setUser} />
         </div>
 
         <div className="sidebar_container">

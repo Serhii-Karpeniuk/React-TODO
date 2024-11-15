@@ -10,6 +10,9 @@ const Sidebar = () => {
           <NavLink to="tasks/all" className="sidebar__item-button">
             Go to your tasks
           </NavLink>
+          <NavLink to="random" className="sidebar__item-button">
+            Random Task
+          </NavLink>
           <NavLink to="about" className="sidebar__item-button">
             About Me
           </NavLink>
