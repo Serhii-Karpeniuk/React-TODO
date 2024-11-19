@@ -24,7 +24,22 @@ const App = () => {
     const firstName = localStorage.getItem("firstName") || "";
     const lastName = localStorage.getItem("lastName") || "";
     setUser({ firstName, lastName });
-  }, []); // переробити у контекст
+  }, []);
+
+  const useResize = () => {
+    const [size, setSize] = useState([0, 0]);
+    useEffect(() => {
+      const getSize = () => setSize([window.innerWidth, window.innerHeight]);
+      getSize();
+      window.addEventListener("resize", getSize);
+      return () => window.removeEventListener("resize", getSize);
+    }, []);
+
+    return size;
+  };
+
+  const size = useResize();
+
   return (
     <DialogProvider>
       <MessageProvider>
@@ -44,6 +59,10 @@ const App = () => {
         </div>
         <ToastContainer />
       </MessageProvider>
+      <div>
+        <div>window.width: {size[0]}</div>
+        <div>window.height: {size[1]}</div>
+      </div>
     </DialogProvider>
   );
 };

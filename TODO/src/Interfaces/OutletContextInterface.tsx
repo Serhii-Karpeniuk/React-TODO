@@ -3,7 +3,7 @@ import TaskInterface from "./TaskInterface";
 interface OutletContextInterface {
   toggleTaskStatus: (taskId: string) => void;
   tasks: TaskInterface[];
-  setTasks: (tasks: TaskInterface[]) => void;
+  setTasks: React.Dispatch<React.SetStateAction<TaskInterface[]>>;
 }
 
 export default OutletContextInterface;

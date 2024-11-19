@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import RandomTaskComponent from "./RandomTaskComponent";
+import AnimationComponent from "../../components/Animation/Animation";
 
 const RandomTaskPage = () => {
   const [randomTasks, setRandomTasks] = useState(null);
@@ -23,7 +24,15 @@ const RandomTaskPage = () => {
             fetchRandomTask={fetchRandomTask}
           />
         ) : (
-          <p>Loading ...</p>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <AnimationComponent />
+          </div>
         )}
       </div>
     </>

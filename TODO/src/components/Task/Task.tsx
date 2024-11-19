@@ -15,7 +15,7 @@ const Task = ({ task }: { task: TaskInterface }) => {
   };
 
   const toggleCheckbox = () => {
-    setTasks((prevTasks) =>
+    setTasks((prevTasks: TaskInterface[]) =>
       prevTasks.map((t) => (t.id === task.id ? { ...t, open: !t.open } : t))
     );
 
@@ -26,17 +26,26 @@ const Task = ({ task }: { task: TaskInterface }) => {
     <>
       <div className="card_task">
         <div className="sub__container">
-          <p className="task__title">Title: {task.title}</p>
+          <p className="task__title">
+            Title:
+            <span className="task__value">{task.title}</span>
+          </p>
+
           <img
+            className="checkbox__image"
             src={task.open ? checkedImg : unCheckedImg}
             onClick={toggleCheckbox}
           />
         </div>
-        <p className="task__description">Description: {task.description}</p>
+        <p className="task__description">
+          Description:
+          <span>{task.description}</span>{" "}
+        </p>
         <div className="time__container">
           <p className="task__startTime">
             Start: {task.startTime} - End: {task.endTime}
           </p>
+
           <button
             className="remove__button"
             onClick={() => removeTask(task.id)}
