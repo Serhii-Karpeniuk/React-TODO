@@ -51,8 +51,8 @@ const Avatar = ({ user }: AvatarProps) => {
 
     if (file) {
       const fileSize = file?.size;
-      if (fileSize > 100000) {
-        toast.error("File must be under 100KB");
+      if (fileSize > 2000000) {
+        toast.error("File must be under 2MB");
         setAvatarMessage(MessageContextEnam.error);
 
         resetAvatarMessage();

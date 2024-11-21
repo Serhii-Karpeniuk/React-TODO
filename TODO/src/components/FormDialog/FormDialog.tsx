@@ -44,7 +44,8 @@ const FormDialog = ({ setUser }: FormDialogProps) => {
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
-            className="h-8 rounded-md py-3 px-0 border-2 border-slate-300"
+            className="h-8 rounded-md py-3 px-0 border-2 border-slate-300 w-46 ml-1"
+            // style={{border: '1px solid black', width: '180px', marginLeft: '5px'}}
           />
         </div>
         <div className="flex mb-5">
@@ -61,7 +62,8 @@ const FormDialog = ({ setUser }: FormDialogProps) => {
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
-            className="h-8 rounded-md py-3 px-0 border-2 border-slate-300"
+            className="h-8 rounded-md py-3 px-0 border-2 border-slate-300 w-46 ml-2.5"
+            // style={{border: '1px solid black', width: '180px', marginLeft: '10px'}}
           />
         </div>
         <div className="flex">
