@@ -45,6 +45,10 @@ const FormDialog = ({ setUser }: FormDialogProps) => {
             onChange={(e) => setFirstName(e.target.value)}
             required
             className="h-8 rounded-md py-3 px-0 border-2 border-slate-300 w-46 ml-1"
+<<<<<<< HEAD
+=======
+            // style={{border: '1px solid black', width: '180px', marginLeft: '5px'}}
+>>>>>>> 402a2cf98bc5e1fb3d16767e94495d9686267b93
           />
         </div>
         <div className="flex mb-5">
@@ -62,6 +66,10 @@ const FormDialog = ({ setUser }: FormDialogProps) => {
             onChange={(e) => setLastName(e.target.value)}
             required
             className="h-8 rounded-md py-3 px-0 border-2 border-slate-300 w-46 ml-2.5"
+<<<<<<< HEAD
+=======
+            // style={{border: '1px solid black', width: '180px', marginLeft: '10px'}}
+>>>>>>> 402a2cf98bc5e1fb3d16767e94495d9686267b93
           />
         </div>
         <div className="flex">

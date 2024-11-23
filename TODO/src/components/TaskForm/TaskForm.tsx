@@ -66,13 +66,17 @@ const TaskForm = ({ addTaskHandler }: TaskFormProps) => {
         </div>
         <div className="mb-1.5">
           <label htmlFor="description" className="title">
-            Description:
+            Description: 
           </label>
           <input
             id="description"
             type="text"
             name="description"
+<<<<<<< HEAD
             className="h-8 rounded-md py-3 px-0 border-2 border-slate-300 w-2/3"
+=======
+             className="h-8 rounded-md py-3 px-0 border-2 border-slate-300 w-2/3"
+>>>>>>> 402a2cf98bc5e1fb3d16767e94495d9686267b93
             placeholder="Enter description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
