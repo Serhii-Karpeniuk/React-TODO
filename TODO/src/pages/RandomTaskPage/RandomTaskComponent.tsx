@@ -1,8 +1,20 @@
-import { useState } from "react";
+import { useState, FC } from "react";
 import closeImage from "../../images/close-img.png";
 import "./RandomTaskPage.scss";
 
-const RandomTaskComponent = ({ randomTasks, fetchRandomTask }) => {
+interface RandomTask {
+  todo: string;
+}
+
+interface RandomTaskComponentProps {
+  randomTasks: RandomTask;
+  fetchRandomTask: () => void;
+}
+
+const RandomTaskComponent: FC<RandomTaskComponentProps> = ({
+  randomTasks,
+  fetchRandomTask,
+}) => {
   const [randomTaskModal, setRandomTaskModal] = useState(false);
 
   function changeRandomTask() {

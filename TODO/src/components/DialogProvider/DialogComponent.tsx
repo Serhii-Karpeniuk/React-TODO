@@ -15,7 +15,7 @@ const DialogComponent = () => {
           onClick={() => {
             setDialogState({ open: false, content: "" });
           }}
-          alt="Закрити"
+          alt="Close"
         />
 
         {dialogState.content}

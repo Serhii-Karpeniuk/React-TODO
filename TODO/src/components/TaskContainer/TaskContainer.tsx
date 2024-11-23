@@ -4,6 +4,7 @@ import "./TaskContainer.scss";
 import { DialogContext } from "../DialogProvider/DialogProvider";
 import TaskForm from "../TaskForm/TaskForm";
 import TaskInterface from "../../Interfaces/TaskInterface";
+import DateComponent from "../Date/Date";
 
 const TaskContainer = () => {
   const { setDialogState } = useContext(DialogContext);
@@ -12,6 +13,40 @@ const TaskContainer = () => {
   const [filter, setFilter] = useState<string>(
     location.pathname.split("/").pop() || "all"
   );
+
+  // const [time] = useState(new Date());
+
+  // const dayOfWeek = time.getDay();
+  // const getNumnerDay = time.getDate();
+  // const monthOfYear = time.getMonth();
+  // const getYear = time.getFullYear();
+
+  // const days = [
+  //   "Sunday",
+  //   "Monday",
+  //   "Tuesday",
+  //   "Wednesday",
+  //   "Thursday",
+  //   "Friday",
+  //   "Saturday",
+  // ];
+
+  // const months = [
+  //   "January",
+  //   "February",
+  //   "March",
+  //   "April",
+  //   "May",
+  //   "June",
+  //   "July",
+  //   "August",
+  //   "September",
+  //   "October",
+  //   "November",
+  //   "December",
+  // ];
+
+  // const fullData = `${days[dayOfWeek]} ${getNumnerDay} ${months[monthOfYear]} ${getYear}`;
 
   useEffect(() => {
     const tasksItems = JSON.parse(localStorage.getItem("tasks") || "[]");
@@ -65,7 +100,9 @@ const TaskContainer = () => {
     <>
       <div className="list__tasks">List of tasks</div>
       <div className="add__task-container">
-        <p className="date">Thursday, 24 October Доробити</p>
+        <p className="date">
+          <DateComponent />
+        </p>
         <button className="new__task-btn" onClick={handleClick}>
           +New Task
         </button>

@@ -2,8 +2,17 @@ import { createContext, CSSProperties, ReactNode, useState } from "react";
 import MessageContextEnam from "../../Enums/MessageContextEnums";
 import MessageContextType from "../../Interfaces/MessageContextType";
 
-export const MessageContext = createContext<MessageContextType | undefined>(
-  undefined
+const defalultMessageContextType = {
+  taskMessage: null,
+  avatarMessage: null,
+  setTaskMessage: () => {},
+  setAvatarMessage: () => {},
+  taskMessageStyle: {},
+  avatarMessageStyle: {},
+};
+
+export const MessageContext = createContext<MessageContextType>(
+  defalultMessageContextType
 );
 
 const MessageProvider = ({ children }: { children: ReactNode }) => {

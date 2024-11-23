@@ -30,7 +30,7 @@ const TaskForm = ({ addTaskHandler }: TaskFormProps) => {
       endTime,
     };
     if (startTime >= endTime) {
-      setTaskMessage(() => MessageContextEnam.errorTime);
+      setTaskMessage(MessageContextEnam.errorTime);
 
       setTimeout(() => {
         setTaskMessage("");
@@ -72,7 +72,7 @@ const TaskForm = ({ addTaskHandler }: TaskFormProps) => {
             id="description"
             type="text"
             name="description"
-            className="h-8 rounded-md py-3 px-0 border-2 border-slate-300"
+            className="h-8 rounded-md py-3 px-0 border-2 border-slate-300 w-2/3"
             placeholder="Enter description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
